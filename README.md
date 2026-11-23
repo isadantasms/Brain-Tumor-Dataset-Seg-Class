@@ -36,14 +36,33 @@ O projeto está estruturado em etapas progressivas e reprodutíveis:
 * **Desempenho por Classe (Conjunto de Teste):** Todas as classes superaram 99% de *recall*: `pituitary` (**99,7%** — 299/300), `notumor` (**99,5%** — 403/405), `glioma` (**99,0%** — 297/300) e `meningioma` (**99,0%** — 303/306).
 * **Análise de Erros:** Os 9 erros residuais no conjunto de teste concentraram-se principalmente entre `meningioma` e `pituitary` (4 casos somados nos dois sentidos) e entre `glioma` e `meningioma` (2 casos), comportamento consistente com a proximidade anatômica e sobreposição morfológica nas imagens completas sem recorte.
 
+### Visualizações e Gráficos de Avaliação
+
+#### Curvas de Aprendizado (Loss e Accuracy)
+![Curvas de Aprendizado P1](results/figures/curvas_aprendizado_p1.png)
+
+#### Matrizes de Confusão (Validação e Teste Independente)
+![Matrizes de Confusão P1](results/figures/matrizes_confusao_p1.png)
+
 ---
 
 ## 📂 Estrutura do Repositório
 
-* `notebooks/P1_Classificacao_ConvNeXt_Atto.ipynb`: Notebook completo e executado com o pipeline de particionamento, treinamento, curvas de aprendizado, matrizes de confusão e inspeção qualitativa de erros.
-* `notebooks/P2_Segmentacao_SegFormer.ipynb`: Pipeline de segmentação semântica binária com `SegFormer` (`nvidia/mit-b0`).
-* `data_splits/splits.csv`: Divisão estratificada fixa (`train`, `val`, `test`) utilizada para garantir reprodutibilidade entre experimentos.
-* `results/P1_classificacao.xlsx`: Planilha experimental contendo o resumo global, métricas detalhadas por classe, histórico das 25 épocas e predições individuais no teste.
+```text
+Brain-Tumor-Dataset-Seg-Class/
+├── README.md                                  # Documentação principal do projeto
+├── .gitignore                                 # Ignorar caches, checkpoints pesados (.pth) e dados locais
+├── notebooks/
+│   ├── P1_Classificacao_ConvNeXt_Atto.ipynb   # Pipeline completo e executado da Etapa 1 (Baseline)
+│   └── P2_Segmentacao_SegFormer.ipynb         # Pipeline estruturado da Etapa 2 (SegFormer)
+├── data_splits/
+│   └── splits.csv                             # Particionamento estratificado fixo (reprodutibilidade)
+└── results/
+    ├── P1_classificacao.xlsx                  # Métricas completas, histórico de épocas e matrizes
+    └── figures/
+        ├── curvas_aprendizado_p1.png          # Evolução de Loss e Accuracy
+        └── matrizes_confusao_p1.png           # Matrizes de confusão (Validação e Teste)
+```
 
 ---
 
